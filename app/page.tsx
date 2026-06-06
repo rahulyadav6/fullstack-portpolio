@@ -45,9 +45,9 @@ export default async function Home() {
               <Link href={`/blog/${post.slug}`}>
                 <CardContent className="p-4">
                   <h3 className="font-semibold">{post.title}</h3>
-                  {/* <p className="text-sm text-muted-foreground">
-                    {new Date(post.createAt).toLocaleDateString()}
-                  </p> */}
+                  <p className="text-sm text-muted-foreground">
+                    {new Date(post.cretedAt).toLocaleDateString()}
+                  </p>
                 </CardContent>
               </Link>
             </Card>

@@ -2,8 +2,20 @@ import prisma from "@/lib/db";
 
 async function main(){
     const blogPosts = [
+    //     {
+    //   slug: "introduction-to-react",
+    //   title: "Introduction to React",
+    //   content: `# Introduction to react
+    //     React lets you build interactive user interfaces using components.
+
+    //     ## Key Concepts
+    //     - JSX for writing UI
+    //     - Components help split UI into small parts
+    //     - State and props manage data flow
+
+    //     **Note:** React works perfectly together with Next.js.`,
+    // },
         {
-      id:"1",
       slug: "learn-nextjs-basics",
       title: "Learn next.js Basics",
       content: `# Learn Next.js Basics
