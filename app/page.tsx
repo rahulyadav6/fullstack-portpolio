@@ -1,7 +1,13 @@
 import { Button } from "@/components/ui/button";
-import { MessageCircle } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import prisma from "@/lib/db";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import Link from "next/link";
-export default function Home() {
+export default async function Home() {
+  const posts = await prisma.blogPost.findMany({
+    orderBy:{cretedAt: "desc"},
+    take:3,
+  })
   return (
     <main className="min-h-screen">
       <section className="flex flex-col items-center justify-center py-20 px-4 text-center">
@@ -26,6 +32,37 @@ export default function Home() {
       <h2 className="text-2xl font-bold mb-4">About me</h2>
       <p className="text-muted-foreground">I specialize in React, Next.js, and Typesctipt. With the experience of number of projects. I love turning ideas into reality.</p>
     </section>
+
+    {/* Recent posts */}
+    <section className="py-16 px-4 max-w-3xl mx-auto">
+      <h2 className="text-2xl font-bold mb-4">Recent Posts</h2>
+      {posts.length > 0 ? (
+        <div>
+          {posts.map((post)=>{
+            return <Card key={post.id}
+            className="hover:bg-accent transition-colors"
+            >
+              <Link href={`/blog/${post.slug}`}>
+                <CardContent className="p-4">
+                  <h3 className="font-semibold">{post.title}</h3>
+                  {/* <p className="text-sm text-muted-foreground">
+                    {new Date(post.createAt).toLocaleDateString()}
+                  </p> */}
+                </CardContent>
+              </Link>
+            </Card>
+          })}
+        </div>
+      ): (
+        <p className="text-muted-foreground">No posts yet</p>
+      )}
+      <Button variant="link" asChild className="mt-4 px-0">
+        <Link href="/blog">
+          View all posts <ArrowRight className="w-4 h-4 ml-1" />
+        </Link>
+      </Button>
+    </section>
+
     </main>
   );
 }
