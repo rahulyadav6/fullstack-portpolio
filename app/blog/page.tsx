@@ -22,7 +22,7 @@ export default async function BlogPage (){
 
 
             {posts.length > 0 ? (
-        <div>
+        <div className='flex flex-col gap-4'>
           {posts.map((post)=>{
             return <Card key={post.id}
             className="hover:bg-accent transition-colors"
