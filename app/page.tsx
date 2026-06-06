@@ -21,7 +21,11 @@ export default function Home() {
         </div>
       </section>
 
-      
+    {/* About section */}
+    <section className="py-16 px-4 max-w-3xl mx-auto">
+      <h2 className="text-2xl font-bold mb-4">About me</h2>
+      <p className="text-muted-foreground">I specialize in React, Next.js, and Typesctipt. With the experience of number of projects. I love turning ideas into reality.</p>
+    </section>
     </main>
   );
 }
