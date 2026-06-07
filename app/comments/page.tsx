@@ -2,6 +2,7 @@ import prisma from "@/lib/db"
 import { Button } from "../../components/ui/button"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
+import AuthButton from "@/components/AuthButton"
 
 export default async function page(){
     const posts = await prisma.comment.findMany({
@@ -22,6 +23,11 @@ export default async function page(){
             <p className="text-muted-foreground mb-8">
                 Sign in with GitHub to leave a comment or message.
             </p>
+
+
+            <div className="mb-8">
+                <AuthButton />
+            </div>
         </div>
     </main>
   )
