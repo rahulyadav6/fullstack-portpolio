@@ -1,42 +1,40 @@
 import prisma from "@/lib/db";
 
-async function main(){
+async function main() {
     const blogPosts = [
-    //     {
-    //   slug: "introduction-to-react",
-    //   title: "Introduction to React",
-    //   content: `# Introduction to react
-    //     React lets you build interactive user interfaces using components.
-
-    //     ## Key Concepts
-    //     - JSX for writing UI
-    //     - Components help split UI into small parts
-    //     - State and props manage data flow
-
-    //     **Note:** React works perfectly together with Next.js.`,
-    // },
         {
-      slug: "learn-nextjs-basics",
-      title: "Learn next.js Basics",
-      content: `# Learn Next.js Basics
-        Next.js is a popular React framework that helps you build fast and SEO-friendly websites.
+            slug: 'what-is-tailwindcss',
+            title: 'What Is Tailwind CSS?',
+            content: `# What Is Tailwind CSS?
+Tailwind CSS is a utility-first CSS framework that makes styling fast and consistent.
 
-        ## Why Use Next.js?
-        - Built-in routing system
-        - server-side rendering and static generation
-        - Great developer experience
+## Benefits
+- No more custom CSS files
+- Responsive utilities
+- Easy to customize
 
-        **Tip:** Start with the App Router if you are building new projects.`,
-    },
+**Tip:** Combine Tailwind with Next.js for a smooth workflow.`,
+        },
+        {
+            slug: 'getting-started-with-prisma',
+            title: 'Getting Started with Prisma',
+            content: `# Getting Started with Prisma
+Prisma is a modern ORM for Node.js and TypeScript that makes database work easier.
+
+## What You Can Do
+- Define your database schema
+- Run migrations
+- Query data with type safety`,
+        }
     ]
 
-    for(const post of blogPosts){
+    for (const post of blogPosts) {
         await prisma.blogPost.create({
-            data:post,
+            data: post,
         })
     }
 }
-main().catch(e=>{
+main().catch(e => {
     console.error(e);
     process.exit(1);
 }).finally(async () => {
