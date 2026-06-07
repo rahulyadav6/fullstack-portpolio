@@ -3,7 +3,6 @@ import { Card, CardContent } from '@/components/ui/card'
 import prisma from '@/lib/db'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
-import React from 'react'
 
 export default async function BlogPage (){
     const posts = await prisma.blogPost.findMany({
